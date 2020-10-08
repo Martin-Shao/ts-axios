@@ -70,17 +70,18 @@ axios({
   }
 })
 
-// axios({
-//   method: 'post',
-//   url: '/base/post',
-//   headers: {
-//     'content-type': 'application/json;charset=utf-8'
-//   },
-//   data: {
-//     a: 1,
-//     b: 2
-//   }
-// })
+axios({
+  method: 'post',
+  url: '/base/post',
+  headers: {
+    'content-type': 'application/json;charset=utf-8',
+    'Accept': 'application/json, test/plain, */*'
+  },
+  data: {
+    a: 1,
+    b: 2
+  }
+})
 
 const arr = new Int32Array([21, 31])
 
@@ -91,14 +92,14 @@ axios({
 })
 
 
-// const paramsString = 'q=URLUtils.searchParams&topic=api'
-// const searchParams = new URLSearchParams(paramsString)
+const paramsString = 'q=URLUtils.searchParams&topic=api'
+const searchParams = new URLSearchParams(paramsString)
 
-// axios({
-//   method: 'post',
-//   url: '/base/post',
-//   data: searchParams
-// })
+axios({
+  method: 'post',
+  url: '/base/post',
+  data: searchParams
+})
 
 // axios({
 //   method: 'post',

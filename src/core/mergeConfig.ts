@@ -1,5 +1,5 @@
-import { isPlainObject, deepMerge } from "../helpers/util";
-import { AxiosRequestConfig } from "../types";
+import { isPlainObject, deepMerge } from '../helpers/util'
+import { AxiosRequestConfig } from '../types'
 
 const strategyMap = Object.create(null)
 
@@ -31,7 +31,7 @@ strategyKeysFromVal2.forEach(key => {
   strategyMap[key] = fromVal2Strategy
 })
 
-const strategyKeysDeepMerge = ['headers']
+const strategyKeysDeepMerge = ['headers', 'auth']
 
 strategyKeysDeepMerge.forEach(key => {
   strategyMap[key] = deepMergeStrategy

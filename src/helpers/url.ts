@@ -1,4 +1,10 @@
+import { done } from 'nprogress'
 import { isDate, isPlainObject } from './util'
+
+interface URLOrigin {
+  protocol: string
+  host: string
+}
 
 function encode(val: string): string {
   return encodeURIComponent(val)
@@ -39,7 +45,7 @@ export function buildURL(url: string, params?: any): string {
       }
       parts.push(`${encode(key)}=${encode(val)}`)
     })
-  });
+  })
 
   let serializedParams = parts.join('&')
 
@@ -49,8 +55,26 @@ export function buildURL(url: string, params?: any): string {
       url = url.slice(0, markIndex)
     }
 
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams
   }
 
   return url
+}
+
+const urlParsingNode = document.createElement('a')
+const currentOrigin = resolveURL(window.location.href)
+
+export function isURLSameOrigin(requestURL: string): boolean {
+  const parsedOrgin = resolveURL(requestURL)
+  return parsedOrgin.protocol === currentOrigin.protocol && parsedOrgin.host === currentOrigin.host
+}
+
+function resolveURL(url: string): URLOrigin {
+  urlParsingNode.setAttribute('href', url)
+  const { protocol, host } = urlParsingNode
+
+  return {
+    protocol,
+    host
+  }
 }

@@ -21,7 +21,8 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       onDownloadProgress,
       onUploadProgress,
       auth,
-      validateStatus
+      validateStatus,
+      paramsSerializer
     } = config
 
     const request = new XMLHttpRequest()

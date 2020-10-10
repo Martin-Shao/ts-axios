@@ -15,6 +15,8 @@ axios({
 }).then((res) => {
   console.log(res)
 }).catch((e) => {
+  console.info('catch a error')
+  console.log(e.response)
   console.log(e)
 })
 
@@ -24,21 +26,22 @@ setTimeout(() => {
     url: '/error/get'
   }).then((res) => {
     console.log(res)
+    console.info('***', typeof res.data)
   }).catch((e) => {
     console.log(e)
   })
 }, 5000)
 
-axios({
-  method: 'get',
-  url: '/error/timeout',
-  timeout: 2000
-}).then((res) => {
-  console.log(res)
-}).catch((e: AxiosError) => {
-  console.log(e.message)
-  console.log(e.config)
-  console.log(e.code)
-  console.log(e.request)
-  console.log(e.isAxiosError)
-})
+// axios({
+//   method: 'get',
+//   url: '/error/timeout',
+//   timeout: 2000
+// }).then((res) => {
+//   console.log(res)
+// }).catch((e: AxiosError) => {
+//   console.log(e.message)
+//   console.log(e.config)
+//   console.log(e.code)
+//   console.log(e.request)
+//   console.log(e.isAxiosError)
+// })

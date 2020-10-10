@@ -102,8 +102,8 @@ function registerErrorRouter () {
         msg: `hello world`
       })
     } else {
-      res.status(500)
-      res.end()
+      res.status(400)
+      res.end('{"error": "BAD USERNAME", "code": 1}')
     }
   })
 

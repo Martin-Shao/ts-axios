@@ -6,8 +6,7 @@ function normalizeHeaderName(headers: any, normalizedName: string): void {
     return
   }
   Object.keys(headers).forEach(name => {
-    if (name !== normalizedName &&
-      name.toUpperCase() === normalizedName.toUpperCase()) {
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
       headers[normalizedName] = headers[name]
       delete headers[name]
     }
@@ -19,7 +18,7 @@ export function processHeaders(headers: any, data: any): any {
 
   if (isPlainObject(data)) {
     if (headers && !headers['Content-Type']) {
-      headers['Content-Type'] = 'application/json;charset=utf-8';
+      headers['Content-Type'] = 'application/json;charset=utf-8'
     }
   }
 
@@ -33,14 +32,13 @@ export function parseHeaders(headers: string): any {
   }
 
   headers.split('\r\n').forEach(line => {
-    let [key, val] = line.split(':')
+    let [key, ...vals] = line.split(':')
     key = key.trim().toLowerCase()
     if (!key) {
       return
     }
-    if (val) {
-      val = val.trim()
-    }
+
+    const val = vals.join(':').trim()
     parsed[key] = val
   })
 

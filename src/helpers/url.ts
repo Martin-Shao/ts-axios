@@ -49,7 +49,7 @@ export function buildURL(
       }
       values.forEach(val => {
         if (isDate(val)) {
-          val = val.toString()
+          val = val.toISOString()
         } else if (isPlainObject(val)) {
           val = JSON.stringify(val)
         }

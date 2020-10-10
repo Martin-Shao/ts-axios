@@ -39,7 +39,7 @@ strategyKeysDeepMerge.forEach(key => {
 
 export default function mergeConfig(
   config1: AxiosRequestConfig,
-  config2: AxiosRequestConfig
+  config2?: AxiosRequestConfig
 ): AxiosRequestConfig {
   if (!config2) {
     config2 = {}
@@ -59,7 +59,7 @@ export default function mergeConfig(
 
   function mergeField(key: string): void {
     const strategy = strategyMap[key] || defaultStrategy
-    config[key] = strategy(config1[key], config2[key])
+    config[key] = strategy(config1[key], config2![key])
   }
 
   return config

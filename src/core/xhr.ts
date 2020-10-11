@@ -131,11 +131,13 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
             request.abort()
             reject(reason)
           })
-          /* istanbul ignore next */
-          .catch(() => {
-            // reject(error)
-            // do nothing
-          })
+          .catch(
+            /* istanbul ignore next */
+            () => {
+              // reject(error)
+              // do nothing
+            }
+          )
       }
     }
 

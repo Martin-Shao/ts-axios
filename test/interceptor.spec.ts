@@ -42,6 +42,22 @@ describe('interceptors', () => {
     })
   })
 
+  test('should  add request interceptor that defualt method is get', () => {
+    const instance = axios.create()
+
+    instance.interceptors.request.use(() => {
+      return {
+        url: '/bar'
+      }
+    })
+    instance('/foo')
+
+    return getAjaxRequest().then(request => {
+      expect(request.method).toBe('GET')
+      expect(request.url).toBe('/bar')
+    })
+  })
+
   test('should add a request interceptor that returns a promise', done => {
     const instance = axios.create()
 

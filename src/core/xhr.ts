@@ -111,7 +111,7 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       }
 
       if (auth) {
-        headers['Authorization'] = 'Basic' + btoa(auth.username + ':' + auth.password)
+        headers['Authorization'] = 'Basic ' + btoa(auth.username + ':' + auth.password)
       }
 
       Object.keys(headers).forEach(name => {

@@ -131,8 +131,10 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
             request.abort()
             reject(reason)
           })
-          .catch(error => {
-            reject(error)
+          /* istanbul ignore next */
+          .catch(() => {
+            // reject(error)
+            // do nothing
           })
       }
     }

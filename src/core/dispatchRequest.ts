@@ -3,7 +3,6 @@ import { flattenHeaders } from '../helpers/headers'
 import { buildURL, combineURL, isAbsoluteURL } from '../helpers/url'
 import transform from './transform'
 import xhr from './xhr'
-import { transformResponse } from '../helpers/data'
 
 export default function dispatchRequest(config: AxiosRequestConfig): AxiosPromise {
   // TODO

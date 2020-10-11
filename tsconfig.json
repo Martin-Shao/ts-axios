@@ -18,5 +18,10 @@
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    ".vscode",
+    "node_modules",
+    "dist"
   ]
 }
